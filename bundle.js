@@ -840,12 +840,12 @@ var NavigatorComponent = /** @class */ (function () {
         this.onClickNavProductButton = function (e) {
             e.preventDefault();
             _this.renderProductComponent();
-            window.history.pushState(null, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS);
+            window.history.pushState({ url: _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS }, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS);
         };
         this.onClickNavChargeButton = function (e) {
             e.preventDefault();
             _this.renderCoinComponent();
-            window.history.pushState(null, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS);
+            window.history.pushState({ url: _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS }, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS);
         };
         new _ProductManageComponent_ProductsStateComponent__WEBPACK_IMPORTED_MODULE_1__["default"](this.vendingMachineProductManager);
         new _ProductManageComponent_ProductInputComponent__WEBPACK_IMPORTED_MODULE_0__["default"](this.vendingMachineProductManager);
@@ -853,11 +853,9 @@ var NavigatorComponent = /** @class */ (function () {
         new _CoinManageComponent_CoinsStateComponent__WEBPACK_IMPORTED_MODULE_5__["default"]();
         if (window.location.pathname === '/' ||
             window.location.pathname === '/javascript-vendingmachine') {
-            console.log(window.location.pathname);
             history.replaceState({ url: '/javascript-vendingmachine' }, null, '/javascript-vendingmachine');
         }
         else {
-            console.log(window.location.pathname);
             history.replaceState({ url: window.location.pathname }, null, window.location.pathname);
         }
         (0,_dom__WEBPACK_IMPORTED_MODULE_6__.on)(this.$navProductButton, 'click', this.onClickNavProductButton);
