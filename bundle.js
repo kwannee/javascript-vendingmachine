@@ -828,7 +828,6 @@ var NavigatorComponent = /** @class */ (function () {
         this.vendingMachineProductManager = new _VendingMachineProductManager__WEBPACK_IMPORTED_MODULE_3__["default"]();
         this.vendingMachineCoinManager = new _VendingMachineCoinManager__WEBPACK_IMPORTED_MODULE_4__["default"]();
         this.onPopstateRoute = function () {
-            console.log(window.location.pathname);
             if (window.location.pathname === _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS) {
                 _this.renderCoinComponent();
             }
@@ -840,49 +839,30 @@ var NavigatorComponent = /** @class */ (function () {
         this.onClickNavProductButton = function (e) {
             e.preventDefault();
             _this.renderProductComponent();
-            window.history.pushState({ url: _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS }, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS);
+            window.history.pushState(null, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS);
         };
         this.onClickNavChargeButton = function (e) {
             e.preventDefault();
             _this.renderCoinComponent();
-            window.history.pushState({ url: _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS }, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS);
+            window.history.pushState(null, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS);
         };
         new _ProductManageComponent_ProductsStateComponent__WEBPACK_IMPORTED_MODULE_1__["default"](this.vendingMachineProductManager);
         new _ProductManageComponent_ProductInputComponent__WEBPACK_IMPORTED_MODULE_0__["default"](this.vendingMachineProductManager);
         new _CoinManageComponent_CoinInputComponent__WEBPACK_IMPORTED_MODULE_2__["default"](this.vendingMachineCoinManager);
         new _CoinManageComponent_CoinsStateComponent__WEBPACK_IMPORTED_MODULE_5__["default"]();
-        if (window.location.pathname === '/') {
-            window.location.pathname = '/javascript-vendingmachine';
-        }
-        else if (window.location.pathname === '/coins') {
-            console.log('/coins');
-        }
-        else if (window.location.pathname === '/products') {
-            console.log('/products');
-        }
-        else if (window.location.pathname === '/javascript-vendingmachine/coins') {
-            console.log('/javascript-vendingmachine/coins');
-        }
-        else if (window.location.pathname === '/javascript-vendingmachine/products') {
-            console.log('/javascript-vendingmachine/products');
-        }
-        else {
-            console.log(window.location.pathname);
-        }
         (0,_dom__WEBPACK_IMPORTED_MODULE_6__.on)(this.$navProductButton, 'click', this.onClickNavProductButton);
         (0,_dom__WEBPACK_IMPORTED_MODULE_6__.on)(this.$navChargeButton, 'click', this.onClickNavChargeButton);
         (0,_dom__WEBPACK_IMPORTED_MODULE_6__.on)(window, 'popstate', this.onPopstateRoute);
         this.routeURLVisit(window.location.pathname);
     }
     NavigatorComponent.prototype.routeURLVisit = function (pathname) {
-        console.log(pathname);
         if (pathname === _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS) {
             this.renderCoinComponent();
-            window.history.pushState({ url: _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS }, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS);
+            window.history.pushState(null, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS);
         }
         if (pathname === _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS) {
             this.renderProductComponent();
-            window.history.pushState({ url: _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS }, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS);
+            window.history.pushState(null, null, _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS);
         }
     };
     NavigatorComponent.prototype.renderProductComponent = function () {
@@ -1125,7 +1105,7 @@ var ERROR_MESSAGE = {
     WRONG_UNIT_CHARGE_MONEY: "\uC794\uB3C8\uC744 \uC798\uBABB \uC785\uB825\uD558\uC168\uC2B5\uB2C8\uB2E4. \uC794\uB3C8\uC740 ".concat(CHARGE_MONEY.UNIT, "\uC6D0 \uB2E8\uC704\uB85C \uC785\uB825\uD574\uC8FC\uC138\uC694."),
     EMPTY_PRODUCT_NAME: '상품명을 입력하지 않으셨습니다. 상품명을 먼저 입력해주세요.',
     OVERFLOW_CHARGE_MONEY: function (chargeMoney) {
-        return "\uC794\uB3C8 \uB204\uC801 \uAE08\uC561\uC774 ".concat(CHARGE_MONEY.MAX_TOTAL_CHARGE_MONEY, "\uC744 \uCD08\uACFC\uD588\uC2B5\uB2C8\uB2E4.<br/>\uD604\uC7AC \uB204\uC801 \uAE08\uC561\uC740 ").concat(chargeMoney, "\uC6D0 \uC785\uB2C8\uB2E4. \uB204\uC801 \uAE08\uC561\uC774 ").concat(CHARGE_MONEY.MAX_TOTAL_CHARGE_MONEY, "\uC6D0\uC774 \uB118\uC9C0 \uC54A\uB3C4\uB85D \uC791\uC131\uD574\uC8FC\uC138\uC694.");
+        return "\uC794\uB3C8 \uB204\uC801 \uAE08\uC561\uC774 ".concat(CHARGE_MONEY.MAX_TOTAL_CHARGE_MONEY, "\uC744 \uCD08\uACFC\uD588\uC2B5\uB2C8\uB2E4.<br />\uD604\uC7AC \uB204\uC801 \uAE08\uC561\uC740 ").concat(chargeMoney, "\uC6D0 \uC785\uB2C8\uB2E4. \uB204\uC801 \uAE08\uC561\uC774 ").concat(CHARGE_MONEY.MAX_TOTAL_CHARGE_MONEY, "\uC6D0\uC774 \uB118\uC9C0 \uC54A\uB3C4\uB85D \uC791\uC131\uD574\uC8FC\uC138\uC694.");
     }
 };
 var DELETE_PRODUCT_CONFIRM_MESSAGE = function (productName) {
@@ -1141,8 +1121,8 @@ var COINS = {
     LIST: [10, 50, 100, 500]
 };
 var ROUTES = {
-    PRODUCTS: '/javascript-vendingmachine/products',
-    COINS: '/javascript-vendingmachine/coins'
+    PRODUCTS: '/products',
+    COINS: '/coins'
 };
 var SNACK_BAR_DELAY_TIME = 3000;
 
