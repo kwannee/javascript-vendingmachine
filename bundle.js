@@ -827,13 +827,13 @@ var NavigatorComponent = /** @class */ (function () {
         this.$productInput = (0,_dom__WEBPACK_IMPORTED_MODULE_6__.$)('.product-info-form__product-input');
         this.vendingMachineProductManager = new _VendingMachineProductManager__WEBPACK_IMPORTED_MODULE_3__["default"]();
         this.vendingMachineCoinManager = new _VendingMachineCoinManager__WEBPACK_IMPORTED_MODULE_4__["default"]();
-        this.onPopstateRoute = function (_a) {
-            var url = _a.state.url;
-            console.log(url);
-            if (url === _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS) {
+        this.onPopstateRoute = function () {
+            console.log(window.location.pathname);
+            if (window.location.pathname === _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.COINS) {
                 _this.renderCoinComponent();
             }
-            if (url === _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS || url === '/') {
+            if (window.location.pathname === _constants__WEBPACK_IMPORTED_MODULE_7__.ROUTES.PRODUCTS ||
+                window.location.pathname === '/') {
                 _this.renderProductComponent();
             }
         };
@@ -851,12 +851,23 @@ var NavigatorComponent = /** @class */ (function () {
         new _ProductManageComponent_ProductInputComponent__WEBPACK_IMPORTED_MODULE_0__["default"](this.vendingMachineProductManager);
         new _CoinManageComponent_CoinInputComponent__WEBPACK_IMPORTED_MODULE_2__["default"](this.vendingMachineCoinManager);
         new _CoinManageComponent_CoinsStateComponent__WEBPACK_IMPORTED_MODULE_5__["default"]();
-        if (window.location.pathname === '/' ||
-            window.location.pathname === '/javascript-vendingmachine') {
-            history.replaceState({ url: '/javascript-vendingmachine' }, null, '/javascript-vendingmachine');
+        if (window.location.pathname === '/') {
+            window.location.pathname = '/javascript-vendingmachine';
+        }
+        else if (window.location.pathname === '/coins') {
+            console.log('/coins');
+        }
+        else if (window.location.pathname === '/products') {
+            console.log('/products');
+        }
+        else if (window.location.pathname === '/javascript-vendingmachine/coins') {
+            console.log('/javascript-vendingmachine/coins');
+        }
+        else if (window.location.pathname === '/javascript-vendingmachine/products') {
+            console.log('/javascript-vendingmachine/products');
         }
         else {
-            history.replaceState({ url: window.location.pathname }, null, window.location.pathname);
+            console.log(window.location.pathname);
         }
         (0,_dom__WEBPACK_IMPORTED_MODULE_6__.on)(this.$navProductButton, 'click', this.onClickNavProductButton);
         (0,_dom__WEBPACK_IMPORTED_MODULE_6__.on)(this.$navChargeButton, 'click', this.onClickNavChargeButton);
